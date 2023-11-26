@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Batalha Pokémon
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Batalha Pokémon</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-button
+        expand="block"
+        fill="solid"
+        (click)="encontrarPokemons()"
+      >
+        Buscar por Pokemon
+      <ion-icon name="search" slot="end"></ion-icon>
+    </ion-button>
+      <ion-card-title [ngStyle]="corTexto">{{ acharPokemon.name | uppercase }}</ion-card-title>
+      <ion-label *ngIf="resultadoMensagem">{{ resultadoMensagem }}</ion-label>
+      <ion-img alt=''
+      [src]="acharPokemon.sprites.front_default">
+      </ion-img>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>Abilities: {{ acharPokemon.abilities.join(', ') }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Height: {{ acharPokemon.height }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Weight: {{ acharPokemon.weight }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="addPhotoToGallery()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
